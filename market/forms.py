@@ -13,7 +13,6 @@ class ListingForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ["first_name", "last_name", "email", "is_staff"]
-        labels = {
-            "is_staff": "Show my name on the department board",
-        }
+        # is_staff is a privilege flag (desk + /admin/ access). It must never be
+        # user-editable; grant it from the Django admin or a management command.
+        fields = ["first_name", "last_name", "email"]
